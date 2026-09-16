@@ -43,8 +43,9 @@ formula updates and repeated counter actions. Click tests respect the runtime's
 200ms duplicate-click guard. A Source node's label property shadows the label
 builder method; the page uses the existing child SourceBag grammar for that tag.
 
-The in-app browser blocked localhost with ERR_BLOCKED_BY_CLIENT; visual browser
-verification remains unavailable. The jsdom check is not a real browser check.
+Real in-app browser verification passed against the final server: the page
+rendered, entering Ada produced Hello, Ada!, clicking Increment displayed 1,
+and navigation to /about rendered the second page. Both automated tests passed.
 The host is a local PoC, with no public deployment or release. New work stays on
 develop pending owner acceptance. Documentation namespace GN, mirrored paths and
 anchors are established; no documentation site is created.
