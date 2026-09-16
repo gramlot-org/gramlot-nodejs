@@ -12,7 +12,8 @@ npm start
 ```
 
 Open http://127.0.0.1:8070. `/` demonstrates a live input, data formula and counter;
-`/about` explains the boundary; `/health` reports the runtime build.
+`/about` explains the boundary. Both pages include Show source and a fixed
+bottom-right Inspector icon; `/health` reports the runtime build.
 `PORT` overrides the port. `GRAMLOT_BROWSER_DIR` overrides the absolute path to
 `gramlot-poc/src/gramlot/resources/browser`.
 

@@ -1,3 +1,4 @@
+import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {createGramlotServer} from './server.mjs';
@@ -8,7 +9,7 @@ export const runtimeDirectory = resolve(process.env.GRAMLOT_BROWSER_DIR ||
   resolve(project, '../gramlot-poc/src/gramlot/resources/browser'));
 export async function buildServer() {
   const gramlot = await import(pathToFileURL(resolve(runtimeDirectory, 'esm/gramlot-dom.js')));
-  return createGramlotServer({runtimeDirectory, pages:createPages(gramlot)});
+  return createGramlotServer({runtimeDirectory, pages:createPages(gramlot, await readFile(new URL('./pages.mjs', import.meta.url), 'utf8'))});
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const port = Number(process.env.PORT || 8070);

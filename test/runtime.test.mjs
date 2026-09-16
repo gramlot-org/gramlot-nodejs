@@ -15,7 +15,7 @@ test('server Source round-trips into the Gramlot runtime with reactive inputs an
   }
   globalThis.CSS = {escape: value => String(value)};
   const gramlot = await import(pathToFileURL(resolve(runtimeDirectory, 'esm/gramlot-dom.js')));
-  const pages = createPages(gramlot);
+  const pages = createPages(gramlot, 'const example = 1;');
   const builder = new gramlot.HtmlBuilder('main');
   builder.loadSource(pages['/']().source);
   const host = document.getElementById('root');
@@ -26,11 +26,16 @@ test('server Source round-trips into the Gramlot runtime with reactive inputs an
     input.value = 'Ada';
     input.dispatchEvent(new Event('input', {bubbles:true}));
     assert.equal(host.querySelector('#greeting').textContent, 'Hello, Ada!');
-    host.querySelector('button').click();
+    host.querySelector('#increment').click();
     await new Promise(resolve => setTimeout(resolve, 220));
-    host.querySelector('button').click();
+    host.querySelector('#increment').click();
     assert.equal(host.querySelector('#count').textContent, '2');
     assert.equal(app.data.getItem('main.count'), 2);
+    host.querySelector('#show-source').click();
+    assert.equal(host.querySelector('.source-panel').hidden, false);
+    assert.equal(host.querySelector('pre').textContent, 'const example = 1;');
+    host.querySelector('#close-source').click();
+    assert.equal(host.querySelector('.source-panel').hidden, true);
     assert.notEqual(pages['/']().source, pages['/about']().source);
   } finally {app.dispose(); dom.window.close();}
 });

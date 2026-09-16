@@ -8,7 +8,7 @@ Document ID: **GN-005**. [Concise mirror](../docs_llm/005-node-host.md).
 The owner approved JavaScript authoring for this local PoC on 2026-09-16 and
 selected native node:http. Node creates a fresh HtmlBuilder and SourceBag for
 each page request. Its fluent grammar declares the UI, Data seeds, formula and
-Source action. Bag.toTytx serializes the Source; browser HtmlBuilder.loadSource
+Source action. Bag.toTytx serializes the Source; browser GramlotBuilder.loadSource
 reconstructs it and Application mounts the ordinary Gramlot runtime.
 
 The host owns the HTML shell, HTTP routing, manifest-based asset serving and
@@ -49,3 +49,20 @@ and navigation to /about rendered the second page. Both automated tests passed.
 The host is a local PoC, with no public deployment or release. New work stays on
 develop pending owner acceptance. Documentation namespace GN, mirrored paths and
 anchors are established; no documentation site is created.
+
+<a id="gn-005-020"></a>
+## 020 · Demo presentation convention
+
+Owner direction, 2026-09-16: every demo exposes Show source and the shared
+Inspector launcher in a bottom corner, with a polished, engaging presentation.
+Both Node pages share a responsive cream/green visual design. Show source opens
+a Source-declared panel containing the actual pages.mjs module read by Node;
+visibility is controlled through a Data Bag. Styling is separated in theme.mjs.
+GramlotBuilder activates the existing Inspector, whose launcher is styled as a
+fixed bottom-right icon with its accessible label and keyboard shortcut retained.
+This convention applies to future demos; other repositories have not been audited
+or retrofitted in this change.
+
+Verification: both automated tests pass, including source-panel visibility and
+content. Browser checks confirmed source open/close, Inspector lazy loading with
+Data/Source tabs, launcher presence on both pages, and narrow-screen appearance.
