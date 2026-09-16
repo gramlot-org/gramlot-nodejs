@@ -1,0 +1,9 @@
+{
+  "name": "gramlot-nodejs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local Gramlot Node.js hosting proof of concept without a database",
+  "scripts": {"start": "node src/start.mjs", "test": "node --test test/*.test.mjs"},
+  "engines": {"node": ">=22"}
+}
