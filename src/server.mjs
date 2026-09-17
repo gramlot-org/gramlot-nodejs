@@ -44,6 +44,8 @@ export async function createGramlotServer({runtimeDirectory, pages = {}} = {}) {
 <script id="startup" type="application/json">${json({source})}</script>
 <script type="module" src="/bootstrap.mjs"></script></body></html>`);
       }
+      if (path === '/assets/gramlot-logo.png') return send(200, 'image/png',
+        await readFile(resolve(project, 'assets/gramlot-logo.png')));
       if (path === '/bootstrap.mjs') return send(200, 'text/javascript',
         await readFile(resolve(project, 'src/bootstrap.mjs')));
       if (path.startsWith(prefix)) {

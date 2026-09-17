@@ -36,6 +36,13 @@ test('server Source round-trips into the Gramlot runtime with reactive inputs an
     assert.equal(host.querySelector('pre').textContent, 'const example = 1;');
     host.querySelector('#close-source').click();
     assert.equal(host.querySelector('.source-panel').hidden, true);
+    host.querySelector('#nav-about').click();
+    assert.equal(host.querySelector('#playground-view').hidden, true);
+    assert.equal(host.querySelector('#about-view').hidden, false);
+    host.querySelector('#nav-playground').click();
+    assert.equal(host.querySelector('#playground-view').hidden, false);
+    assert.equal(host.querySelector('#count').textContent, '2');
+    assert.equal(host.querySelector('input').value, 'Ada');
     assert.notEqual(pages['/']().source, pages['/about']().source);
   } finally {app.dispose(); dom.window.close();}
 });

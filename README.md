@@ -1,6 +1,6 @@
 # Gramlot Node.js PoC
 
-Local/private experiment: Node.js builds Gramlot Source and serves the existing
+Public experimental repository: Node.js builds Gramlot Source and serves the existing
 browser runtime. No Express, Python process, database, or npm install is required
 to run it. This is not a released or accepted Gramlot server adapter.
 

@@ -3,7 +3,8 @@
 Follow ../gramlot/AGENTS.md and its constitution. The owner approved JavaScript
 page authoring specifically for this PoC on 2026-09-16. Use Gramlot Source, Data
 Bags, bindings and shared behavior; no application DOM or manual event wiring.
-Keep this repository local/private. Develop on develop; do not publish or deploy.
+Owner 2026-09-17 authorizes this public repository and source pushes. Develop on
+develop; package publication and application deployment need separate authorization.
 Use node:http, without Express or database adapters for this slice.
 Keep technical documentation in English and mirror docs into docs_llm.
 Documentation namespace: GN. Consume the sibling gramlot-poc browser distribution;

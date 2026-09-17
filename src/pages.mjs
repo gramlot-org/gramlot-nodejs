@@ -8,21 +8,28 @@ export function createPages({HtmlBuilder, wrapSource}, sourceCode = '') {
     root.styleSheet({cssText:theme});
     root.dataSetter({destination:'sourceCode', value:sourceCode});
     root.dataSetter({destination:'sourceHidden', value:true});
+    root.dataSetter({destination:'about', value:about});
+    root.dataFormula({destination:'aboutHidden', formula:'!about', about:'^about', _on_start:true});
     const shell = root.div({class:'shell'});
     const header = shell.header({class:'topbar'});
-    header.a('gramlot', {href:'/',class:'brand'});
+    const brand = header.div({class:'brand'});
+    brand.img({src:'/assets/gramlot-logo.png',alt:'Gramlot logo',width:64,height:64});
+    const identity = brand.div();
+    identity.strong('Gramlot');
+    identity.span('Esempio di SPA con Gramlot', {class:'brand-subtitle'});
     const nav = header.nav({class:'nav'});
-    nav.a('Playground', {href:'/'});
-    nav.a('How it works', {href:'/about'});
-    nav.button('Show source', {class:'btn',id:'show-source',action:'this.SET("sourceHidden", false);'});
+    nav.button('Playground', {id:'nav-playground',class:'nav-tab',action:'this.SET("about", false);'});
+    nav.button('Come funziona', {id:'nav-about',class:'nav-tab',action:'this.SET("about", true);'});
+    nav.button('Show source', {class:'btn source-button',id:'show-source',action:'this.SET("sourceHidden", false);'});
     const main = shell.main();
     const hero = main.section({class:'hero'});
-    hero.span('THE NODE.JS EXPERIMENT', {class:'eyebrow'});
-    hero.h1(about ? 'One language.\nA shared way to build.' : 'Small interactions.\nReal possibilities.');
-    hero.p(about ? 'A small server, a declarative page, and a browser that brings it to life.' : 'Give it a name. Give it a click. Watch your interface respond, naturally.');
+    hero.span('SINGLE PAGE APPLICATION · NODE.JS', {class:'eyebrow'});
+    hero.h1('Una pagina. Tante possibilità.');
+    hero.p('Interagisci, esplora il codice e osserva i dati: tutto nella stessa pagina, con Gramlot.');
     hero.span('BUILT WITH GRAMLOT', {class:'badge'});
-    if (about) {
-      const flow = main.div({class:'flow'});
+    {
+      const aboutView = main.section({hidden:'^aboutHidden',id:'about-view'});
+      const flow = aboutView.div({class:'flow'});
       for (const [step,title,description] of [
         ['01 / DECLARE','Describe the page','Node.js builds a fresh Gramlot Source for each request. Structure, bindings and actions travel together.'],
         ['02 / DELIVER','Keep the server small','Native HTTP delivers the page and shared runtime. No Express, Python process or database is required.'],
@@ -31,12 +38,13 @@ export function createPages({HtmlBuilder, wrapSource}, sourceCode = '') {
         const card = flow.section({class:'card'});
         card.span(step,{class:'step'}); card.h2(title); card.p(description);
       }
-      main.p('This is a local experiment. Values belong to the current page and reset when you reload.',{class:'note'});
-    } else {
+      aboutView.p('This is a local experiment. Values belong to the current page and reset when you reload.',{class:'note'});
+    }
+    {
       root.dataSetter({destination:'name',value:'World'});
       root.dataSetter({destination:'count',value:0});
       root.dataFormula({destination:'greeting',formula:'"Hello, " + name + "!"',name:'^name',_on_start:true});
-      const playground = main.div({class:'playground'});
+      const playground = main.div({class:'playground',hidden:'^about',id:'playground-view'});
       const welcome = playground.section({class:'card'});
       welcome.span('01 / MAKE IT PERSONAL',{class:'step'});
       welcome.h2('A little introduction.');
@@ -60,7 +68,7 @@ export function createPages({HtmlBuilder, wrapSource}, sourceCode = '') {
     bar.button('Close source ×',{id:'close-source',class:'btn',action:'this.SET("sourceHidden", true);'});
     source.p('The actual JavaScript module that declares both demo pages. Shared styling lives in theme.mjs.',{class:'source-caption'});
     source.pre('^sourceCode');
-    return {title:about ? 'How it works · Gramlot' : 'Playground · Gramlot',source:builder.source.toTytx()};
+    return {title:'SPA con Gramlot · Node.js',source:builder.source.toTytx()};
   }
   return {'/':()=>page(),'/about':()=>page(true)};
 }

@@ -55,7 +55,7 @@ anchors are established; no documentation site is created.
 
 Owner direction, 2026-09-16: every demo exposes Show source and the shared
 Inspector launcher in a bottom corner, with a polished, engaging presentation.
-Both Node pages share a responsive cream/green visual design. Show source opens
+Both Node pages share a responsive blue/gold visual design. Show source opens
 a Source-declared panel containing the actual pages.mjs module read by Node;
 visibility is controlled through a Data Bag. Styling is separated in theme.mjs.
 GramlotBuilder activates the existing Inspector, whose launcher is styled as a
@@ -66,3 +66,10 @@ or retrofitted in this change.
 Verification: both automated tests pass, including source-panel visibility and
 content. Browser checks confirmed source open/close, Inspector lazy loading with
 Data/Source tabs, launcher presence on both pages, and narrow-screen appearance.
+
+The header identifies the example as a Gramlot SPA and displays the existing
+Gramlot logo, copied unchanged from gramlot-poc/assets/gramlot-logo.png. Playground
+and explanation navigation now toggles Source-declared views through Data Bags,
+without page reload or state loss. /about remains an initial-view entry URL.
+Source access is a prominent header button; the shared Inspector remains fixed
+bottom-right. The automated runtime check covers view switching and state retention.
