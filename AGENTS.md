@@ -13,3 +13,11 @@ do not copy the framework or present this experiment as accepted core behavior.
 Every demo page must offer Show source for its actual authoring module and the
 shared Gramlot Inspector launcher fixed in a bottom corner. Design demos with
 a deliberate, attractive visual identity and responsive layout.
+
+
+## Accepted native profile — 2026-09-24
+
+Owner accepted the clean-core native 0.1.0 and GitHub archive delivery. Use the
+current native APIs and paired guides. Earlier PoC-only runtime/compiler/data
+envelope instructions describe historical work; they do not override the native
+Host/Page/Worker contract. No registry publication or deployment is authorized.

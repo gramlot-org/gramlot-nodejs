@@ -4,6 +4,25 @@
   "private": true,
   "type": "module",
   "description": "Local Gramlot Node.js hosting proof of concept without a database",
-  "scripts": {"start": "node src/start.mjs", "test": "node --test test/*.test.mjs"},
-  "engines": {"node": ">=22"}
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "node src/start.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:native": "node --test test/native.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@gramlot/native-html": "*"
+  },
+  "exports": {
+    "./native": "./src/native-node.mjs",
+    "./bun": "./src/native-bun.mjs"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "NOTICE"
+  ]
 }

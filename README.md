@@ -1,4 +1,27 @@
-# Gramlot Node.js PoC
+# Gramlot Node.js native HTML host
+
+The native 0.1.0 profile exports `startNativeServer` from
+`gramlot-nodejs/native` for Node and `gramlot-nodejs/bun` for Bun. It hosts
+trusted JavaScript Gramlot Page modules through the clean core's Host. The
+reusable working launchers are in the [Hello World application](https://github.com/gramlot-org/gramlot-examples/tree/main/apps/hello-world):
+
+```sh
+cd ../gramlot-examples/apps/hello-world
+npm run start:node
+# Or, with Bun installed:
+bun run start:bun
+```
+
+Install the local core, adapter and example npm artifacts with their current
+first-party dependency graph before launching; these package names do not yet
+imply registry availability. The page imports `Page` from `@gramlot/native-html/page`
+and the Node/Bun servers require no Python process or database. See the
+[native host guide](docs/010-native-html.md) for API and verification.
+
+## Historical PoC server
+
+The following `npm start` instructions run the older sibling-PoC server. They
+are preserved as experimental history and are outside native 0.1.0 compatibility.
 
 Public experimental repository: Node.js builds Gramlot Source and serves the existing
 browser runtime. No Express, Python process, database, or npm install is required

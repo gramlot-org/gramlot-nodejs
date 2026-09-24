@@ -1,5 +1,9 @@
 # 005 · Node hosting experiment
 
+This guide records the earlier sibling-PoC server and its `npm start` command.
+It is historical evidence, outside native 0.1.0 compatibility. The current
+Node/Bun API and launchers are in [GN-010](010-native-html.md).
+
 Document ID: **GN-005**. [Concise mirror](../docs_llm/005-node-host.md).
 
 <a id="gn-005-005"></a>
